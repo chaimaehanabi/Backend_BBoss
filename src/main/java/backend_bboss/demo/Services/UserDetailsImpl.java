@@ -105,4 +105,56 @@ public class UserDetailsImpl implements UserDetails {
 		UserDetailsImpl user = (UserDetailsImpl) o;
 		return Objects.equals(id, user.id);
 	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getAddress_users() {
+		return Address_users;
+	}
+
+	public void setAddress_users(String address_users) {
+		Address_users = address_users;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return Email;
+	}
+
+	public void setEmail(String email) {
+		Email = email;
+	}
+
+	public String getTele_users() {
+		return tele_users;
+	}
+
+	public void setTele_users(String tele_users) {
+		this.tele_users = tele_users;
+	}
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
 }
