@@ -49,11 +49,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable()
+		         http.cors().and().csrf().disable()
 			    .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			    .authorizeRequests()
-				.antMatchers("/api/authenticate/**").permitAll()
+				.antMatchers("/api/BBBos/**").permitAll()
 				.antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/register").permitAll()
