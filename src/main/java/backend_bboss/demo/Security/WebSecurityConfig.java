@@ -1,4 +1,5 @@
 package backend_bboss.demo.Security;
+import backend_bboss.demo.Security.JWT.JwtAuthTokenFilter;
 import backend_bboss.demo.Services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,13 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private JwtAuthenticationEntryPoint unauthorizedHandler;
 
 	@Bean
-	public JwtTokenAuthOncePerRequestFilter authenticationJwtTokenFilter() {
-		return new JwtTokenAuthOncePerRequestFilter();
+	public JwtAuthTokenFilter authenticationJwtTokenFilter() {
+		return new JwtAuthTokenFilter();
 	}
-
 	@Override
 	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+		authenticationManagerBuilder
+				.userDetailsService(userDetailsService)
+				.passwordEncoder(passwordEncoder());
 	}
 
 	@Bean
@@ -70,6 +72,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/prodact/BBBos**").hasAuthority("ADMIN");
 
 		http.authorizeRequests().anyRequest().authenticated();
-		         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }
