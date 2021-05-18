@@ -1,6 +1,5 @@
-package backend_bboss.demo.Security;
+package backend_bboss.demo.Security.JWT;
 import backend_bboss.demo.Models.Users;
-import backend_bboss.demo.Services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,10 +12,10 @@ import java.util.Date;
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-	@Value("${loizenai.app.jwtSecret}")
+	@Value("jwt.signing.key.secret")
 	private String jwtSecret;
 
-	@Value("${loizenai.app.jwtExpiration}")
+	@Value("jwt.token.expiration.in.seconds")
 	private int jwtExpiration;
 
 	public String generateJwtToken(Authentication authentication) {

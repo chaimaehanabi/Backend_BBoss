@@ -1,5 +1,6 @@
 package backend_bboss.demo.Security;
 import backend_bboss.demo.Security.JWT.JwtAuthTokenFilter;
+import backend_bboss.demo.Security.JWT.JwtAuthenticationEntryPoint;
 import backend_bboss.demo.Services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -51,27 +52,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		         http.cors().and().csrf().disable()
-			    .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-			    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			    .authorizeRequests()
+		http.cors().and().csrf().disable().
+				authorizeRequests()
 				.antMatchers("/api/BBBos/**").permitAll()
-				.antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-				.antMatchers("/login").permitAll()
-				.antMatchers("/register").permitAll()
-						 //consulter un produit par son id
-		.antMatchers(HttpMethod.GET,"/prodact/BBBos/**").permitAll();
-
-		//ajouter un produit
-		http.authorizeRequests().antMatchers(HttpMethod.POST,"/prodact/BBBos/**").hasAuthority("ADMIN");
-
-		//modifier un produit
-		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/prodact/BBBos/**").hasAuthority("ADMIN");
-
-		//supprimer un produit
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/prodact/BBBos**").hasAuthority("ADMIN");
-
-		http.authorizeRequests().anyRequest().authenticated();
+						 .anyRequest().authenticated()
+						 .and()
+						 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+						 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
-}
+
+	}

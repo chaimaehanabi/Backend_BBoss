@@ -1,6 +1,5 @@
 package backend_bboss.demo.Security.JWT;
 
-import backend_bboss.demo.Security.JwtUtils;
 import backend_bboss.demo.Services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

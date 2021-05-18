@@ -1,4 +1,4 @@
-package backend_bboss.demo.Security;
+package backend_bboss.demo.Security.JWT;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +17,12 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 	private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationEntryPoint.class);
 
 	@Override
-	public void commence(HttpServletRequest request, HttpServletResponse response,
-			AuthenticationException authException) throws IOException, ServletException {
-		logger.error("Unauthorized error: {}", authException.getMessage());
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized");
+	public void commence(HttpServletRequest request,
+						 HttpServletResponse response,
+						 AuthenticationException e)
+			throws IOException, ServletException {
+		logger.error("Unauthorized error. Message - {}", e.getMessage());
+		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error -> Unauthorized");
 	}
 
 }

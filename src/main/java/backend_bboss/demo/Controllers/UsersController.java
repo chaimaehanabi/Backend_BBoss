@@ -8,7 +8,7 @@ import backend_bboss.demo.Repository.RoleRepository;
 import backend_bboss.demo.Repository.UserRepository;
 import backend_bboss.demo.Request.LoginRequest;
 import backend_bboss.demo.Request.RegisterRequest;
-import backend_bboss.demo.Security.JwtUtils;
+import backend_bboss.demo.Security.JWT.JwtUtils;
 import backend_bboss.demo.Services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
