@@ -11,17 +11,12 @@ import java.util.Date;
 @Component
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
-
-	@Value("jwt.signing.key.secret")
+	@Value("loizenai.app.jwtSecret")
 	private String jwtSecret;
-
-	@Value("jwt.token.expiration.in.seconds")
+	@Value("loizenai.app.jwtExpiration")
 	private int jwtExpiration;
-
 	public String generateJwtToken(Authentication authentication) {
-
 		Users users = (Users) authentication.getPrincipal();
-
 		return Jwts.builder()
 				.setSubject((users.getUsername()))
 				.setIssuedAt(new Date())
