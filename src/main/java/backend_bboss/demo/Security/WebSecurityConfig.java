@@ -57,8 +57,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/register").permitAll()
-			.anyRequest()
-				.authenticated().and().httpBasic();
+						 //consulter un produit par son id
+		.antMatchers(HttpMethod.GET,"/prodact/BBBos/**").permitAll();
+
+		//ajouter un produit
+		http.authorizeRequests().antMatchers(HttpMethod.POST,"/prodact/BBBos/**").hasAuthority("ADMIN");
+
+		//modifier un produit
+		http.authorizeRequests().antMatchers(HttpMethod.PUT,"/prodact/BBBos/**").hasAuthority("ADMIN");
+
+		//supprimer un produit
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/prodact/BBBos**").hasAuthority("ADMIN");
+
+		http.authorizeRequests().anyRequest().authenticated();
 		         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

@@ -2,11 +2,8 @@ package backend_bboss.demo.Models;
 
 import backend_bboss.demo.Models.ERole;
 import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
-
-
 @Setter
 @Data
 @AllArgsConstructor

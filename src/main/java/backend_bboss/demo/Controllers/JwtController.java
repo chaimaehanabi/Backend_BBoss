@@ -28,10 +28,8 @@ import javax.validation.Valid;
 public class JwtController {
 	@Autowired
 	AuthenticationManager authenticationManager;
-
 	@Autowired
 	UserRepository userRepository;
-
 	@Autowired
 	RoleRepository roleRepository;
 
@@ -99,4 +97,5 @@ public class JwtController {
 		userRepository.save(user);
 		return ResponseEntity.ok(new MessageResponse("Registration successfully!"));
 	}
+
 }
