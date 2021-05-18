@@ -44,19 +44,15 @@ public class JwtController {
 		System.out.println("aaaa");
 		System.out.println(loginRequest.getPassword());
 		System.out.println(loginRequest.getUsername());
-		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+						loginRequest.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		System.out.println("aaaa");
-		System.out.println(loginRequest.getPassword());
-		System.out.println(loginRequest.getUsername());
+
 		String jwt = jwtUtils.generateJwtToken(authentication);
-		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority()).collect(Collectors.toList());
-		return ResponseEntity.ok(new JwtResponse(jwt,
-												 userDetails.getId(),
-												 userDetails.getUsername(),
-												 roles));
+		return ResponseEntity.ok(new JwtResponse(jwt));
 	}
+
 	// http://localhost:4200//register
 	@PostMapping("/register")
 	public ResponseEntity<?> registerUser( @RequestBody RegisterRequest signUpRequest) {
