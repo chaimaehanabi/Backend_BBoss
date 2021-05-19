@@ -21,7 +21,6 @@ import java.util.Set;
 
 @Setter
 @Data
-@AllArgsConstructor
 @Getter
 @Entity
 @Table(	name = "users",  uniqueConstraints = { @UniqueConstraint(columnNames = "username") })
@@ -40,7 +39,8 @@ public class Users  implements Serializable  {
     @Size(max = 50)
     private String Address;
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "user_roles",  joinColumns = @JoinColumn(name = "userid"),  inverseJoinColumns = @JoinColumn(name = "roleid"))
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),  inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Roles> roles = new HashSet<>();
 
     public Users() {
@@ -107,6 +107,17 @@ public class Users  implements Serializable  {
     }
 
     public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
+    }
+
+    public Users(@NotNull long id, String username, String firstname, String password, @javax.validation.constraints.Email String email, @Size(max = 50) String tel, @Size(max = 50) String address, Set<Roles> roles) {
+        this.id = id;
+        this.username = username;
+        this.firstname = firstname;
+        this.password = password;
+        Email = email;
+        this.tel = tel;
+        Address = address;
         this.roles = roles;
     }
 }

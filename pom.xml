@@ -41,14 +41,20 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-
             <groupId>io.jsonwebtoken</groupId>
-
             <artifactId>jjwt</artifactId>
-
             <version>0.9.1</version>
-
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.16.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>

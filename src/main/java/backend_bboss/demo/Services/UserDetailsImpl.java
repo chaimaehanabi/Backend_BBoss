@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.Email;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @Getter
+//users service
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private Long id;
@@ -29,7 +30,18 @@ public class UserDetailsImpl implements UserDetails {
 	private String password;
 	private String Email;
 	private String tele_users;
+	private Users user;
 	private Collection<? extends GrantedAuthority> authorities;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		user.getRoles().forEach(temp -> {
+			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(temp.getNane_roles());
+			authorities.add(grantedAuthority);
+		});
+		return authorities;
+	}
 
 	public UserDetailsImpl(Long id, String username, String password,String firstname,String Email,String tele_users,
                            Collection<? extends GrantedAuthority> authorities) {
@@ -40,6 +52,10 @@ public class UserDetailsImpl implements UserDetails {
 		this.Email = Email;
 		this.tele_users=tele_users;
 		this.authorities = authorities;
+	}
+
+	public UserDetailsImpl(Users user) {
+		this.user=user;
 	}
 
 	public static UserDetailsImpl build(Users user) {
@@ -57,10 +73,6 @@ public class UserDetailsImpl implements UserDetails {
 				authorities);
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
-	}
 
 	public Long getId() {
 		return id;
@@ -157,4 +169,5 @@ public class UserDetailsImpl implements UserDetails {
 	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
+
 }

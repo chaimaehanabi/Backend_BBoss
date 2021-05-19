@@ -1,7 +1,7 @@
 package backend_bboss.demo.Controllers;
 import java.util.*;
-import java.util.stream.Collectors;
-import backend_bboss.demo.Domaine.JwtResponse;
+
+import backend_bboss.demo.Domaine.Request.JwtResponse;
 import backend_bboss.demo.Domaine.MessageResponse;
 import backend_bboss.demo.Models.ERole;
 import backend_bboss.demo.Models.Roles;
@@ -11,7 +11,6 @@ import backend_bboss.demo.Repository.UserRepository;
 import backend_bboss.demo.Request.LoginRequest;
 import backend_bboss.demo.Request.RegisterRequest;
 import backend_bboss.demo.Security.JWT.JwtUtils;
-import backend_bboss.demo.Services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

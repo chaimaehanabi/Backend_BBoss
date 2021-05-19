@@ -17,6 +17,7 @@ public class Roles implements Serializable {
     @Column(length = 20)
     @Enumerated(EnumType.STRING)
     private ERole name;
+    String nane_roles;
     public Roles() {
         super();
     }

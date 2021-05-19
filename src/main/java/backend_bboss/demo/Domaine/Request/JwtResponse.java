@@ -1,8 +1,6 @@
-package backend_bboss.demo.Domaine;
+package backend_bboss.demo.Domaine.Request;
 
 import lombok.*;
-
-import java.util.List;
 @EqualsAndHashCode
 @Setter
 @Data
