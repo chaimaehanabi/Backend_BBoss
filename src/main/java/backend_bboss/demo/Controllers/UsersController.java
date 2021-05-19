@@ -27,17 +27,15 @@ import java.util.*;
 @RequestMapping("/BBBos/")
 public class UsersController {
     private TokenService tokenService;
+
     private UserDetailsImpl userService;
+
     private PasswordEncoder passwordEncoder;
     @Autowired
     UserRepository repository;
     @Autowired
     RoleRepository roleRepository;
-    @Autowired
-    public UsersController(TokenService tokenService,UserDetailsImpl userService, PasswordEncoder passwordEncoder) {
-        this.tokenService = tokenService;
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder; }
+
         // http://localhost:4200"/BBBos/signin
     @PostMapping("/signin")
     public LoginRequest logIn(@RequestBody LoginRequest jwtLogin){
@@ -72,7 +70,7 @@ public class UsersController {
             });
         }
         user.setRoles(roles);
-        repository.save(user);
+        userService.addUser(user);
         return ResponseEntity.ok(new MessageResponse("Registration successfully!"));
 
     }

@@ -1,7 +1,6 @@
 package backend_bboss.demo.Services;
 import backend_bboss.demo.Models.Users;
 import backend_bboss.demo.Repository.UserRepository;
-import com.sun.security.auth.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
