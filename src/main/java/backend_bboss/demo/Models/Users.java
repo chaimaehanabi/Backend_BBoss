@@ -120,4 +120,7 @@ public class Users  implements Serializable  {
         Address = address;
         this.roles = roles;
     }
+
+    public void setActive(int i) {
+    }
 }

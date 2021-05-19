@@ -170,4 +170,6 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 	}
 
+	public void addUser(Users user) {
+	}
 }

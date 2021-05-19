@@ -1,4 +1,4 @@
-package backend_bboss.demo.Services;
+package backend_bboss.demo.Services.Produit;
 
 import backend_bboss.demo.Models.Category;
 import backend_bboss.demo.Models.Product;
