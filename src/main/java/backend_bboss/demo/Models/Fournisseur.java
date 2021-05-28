@@ -1,7 +1,13 @@
 package backend_bboss.demo.Models;
 
-import javax.persistence.*;
+import lombok.*;
 
+import javax.persistence.*;
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Data
+@Getter
 @Entity
 @Table(name = "fournisseur")
 public class Fournisseur {
@@ -98,27 +104,7 @@ public class Fournisseur {
     public void setSoldef(float soldef) {
         this.soldef = soldef;
     }
-    public Fournisseur() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    public Fournisseur(long id, String libelle, String responsable, String adresse, String ville, String tel,
-                       String email, String fax, String login, String pwd, String matfisc, float soldinit, float soldef) {
-        super();
-        this.id = id;
-        this.libelle = libelle;
-        this.responsable = responsable;
-        this.adresse = adresse;
-        this.ville = ville;
-        this.tel = tel;
-        this.email = email;
-        this.fax = fax;
-        this.login = login;
-        this.pwd = pwd;
-        this.matfisc = matfisc;
-        this.soldinit = soldinit;
-        this.soldef = soldef;
-    }
+
     @Override
     public String toString() {
         return "Fournisseur [id=" + id + ", libelle=" + libelle + ", responsable=" + responsable + ", adresse="

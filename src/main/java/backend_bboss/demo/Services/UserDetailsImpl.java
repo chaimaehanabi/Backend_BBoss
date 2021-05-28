@@ -9,7 +9,6 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,16 +32,13 @@ public class UserDetailsImpl implements UserDetails {
 	private Users user;
 	private Collection<? extends GrantedAuthority> authorities;
 
+
+
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> authorities = new ArrayList<>();
-		user.getRoles().forEach(temp -> {
-			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(temp.getNane_roles());
-			authorities.add(grantedAuthority);
-		});
 		return authorities;
 	}
-
 	public UserDetailsImpl(Long id, String username, String password,String firstname,String Email,String tele_users,
                            Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
@@ -53,11 +49,6 @@ public class UserDetailsImpl implements UserDetails {
 		this.tele_users=tele_users;
 		this.authorities = authorities;
 	}
-
-	public UserDetailsImpl(Users user) {
-		this.user=user;
-	}
-
 	public static UserDetailsImpl build(Users user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
@@ -66,7 +57,7 @@ public class UserDetailsImpl implements UserDetails {
 		return new UserDetailsImpl(
 				user.getId(),
 				user.getUsername(), 
-				user.getfirstname(),
+				user.getFirstname(),
 				user.getPassword(),
 				user.getEmail(),
 				user.getTel(),

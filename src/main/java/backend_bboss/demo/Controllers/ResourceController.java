@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/resource")
 public class ResourceController {
-	
 	@GetMapping("/content")
 	public String publicContent() {
 		return "Public Content.";

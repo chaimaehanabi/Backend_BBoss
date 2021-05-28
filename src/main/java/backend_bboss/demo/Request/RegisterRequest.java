@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.*;
 import java.util.Set;
 
 @Setter
@@ -14,13 +12,12 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 public class RegisterRequest {
-	@NotBlank
-    @Size(min = 3, max = 40)
     private String username;
-    @NotBlank
 	private Set<String> roles;
-    @NotBlank
-    @Size(min = 6, max = 20)
     private String password;
+    private String firstname;
+    private String  Email;
+    private String tel;
+    private String Address;
 
 }
