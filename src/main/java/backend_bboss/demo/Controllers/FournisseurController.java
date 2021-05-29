@@ -91,7 +91,6 @@ public class FournisseurController {
 	    	four.setAdresse(Fournisseur.getAdresse());
 	          
 	    	four.setEmail(Fournisseur.getEmail());
-	    	four.setLogin(Fournisseur.getLogin());
 	          
 	           four.setPwd(Fournisseur.getPwd());
 	           four.setTel(Fournisseur.getTel());

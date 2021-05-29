@@ -1,31 +1,50 @@
 package backend_bboss.demo.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Data
 @Getter
 @Entity
-@Table(name = "fournisseur")
+
+@Table(name = "fournisseur",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "code"
+                ),
+                @UniqueConstraint(columnNames = "email")
+        })
 public class Fournisseur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private int code;
+    @NotBlank
+    @Size(max = 60)
     private String libelle;
     private String responsable;
     private String adresse;
     private String ville;
     private String tel;
+    @NotBlank
+    @Size(max = 60)
+    @Email
     private String email;
     private String fax;
-    private String login;
     private String pwd;
     private String  matfisc;
-    private float   soldinit;
-    private float   soldef;
+    private double  soldef;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "four")
+    @JsonIgnore
+    private List<Product> products;
     public long getId() {
         return id;
     }
@@ -74,44 +93,13 @@ public class Fournisseur {
     public void setFax(String fax) {
         this.fax = fax;
     }
-    public String getLogin() {
-        return login;
-    }
-    public void setLogin(String login) {
-        this.login = login;
-    }
-    public String getPwd() {
-        return pwd;
-    }
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-    public String getMatfisc() {
-        return matfisc;
-    }
-    public void setMatfisc(String matfisc) {
-        this.matfisc = matfisc;
-    }
-    public float getSoldinit() {
-        return soldinit;
-    }
-    public void setSoldinit(float soldinit) {
-        this.soldinit = soldinit;
-    }
-    public float getSoldef() {
-        return soldef;
-    }
+
     public void setSoldef(float soldef) {
         this.soldef = soldef;
     }
 
-    @Override
-    public String toString() {
-        return "Fournisseur [id=" + id + ", libelle=" + libelle + ", responsable=" + responsable + ", adresse="
-                + adresse + ", ville=" + ville + ", tel=" + tel + ", email=" + email + ", fax=" + fax + ", login="
-                + login + ", pwd=" + pwd + ", matfisc=" + matfisc + ", soldinit=" + soldinit + ", soldef=" + soldef
-                + "]";
-    }
+
+
 
 
 }

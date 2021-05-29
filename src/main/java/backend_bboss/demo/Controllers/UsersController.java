@@ -75,7 +75,7 @@ public class UsersController {
                     .body(new MessageResponse("Username is already exist!"));
         }
         // Create new user's account
-        val user = new Users(registerRequest.getUsername(),encoder.encode(registerRequest.getPassword()), registerRequest.getFirstname(), registerRequest.getEmail(), registerRequest.getTel());
+        val user = new Users(registerRequest.getUsername(), registerRequest.getFirstname(), encoder.encode(registerRequest.getPassword()),registerRequest.getEmail(),registerRequest.getTel());
         Set<String> strRoles = registerRequest.getRoles();
         Set<Roles> roles = new HashSet<>();
         if (strRoles == null) {

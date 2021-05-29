@@ -12,15 +12,22 @@ import java.util.Date;
 public class Product {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String description;
-    private Double price;
-    private int quantity;
-    private String photo;
-    private Date dateCreation;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String code;
+    private String libelle;
+    private double pa;
+    private double pv;
+    private int tva;
+    private int stock;
+    private String ccateg;
+    private String cscateg;
+    private String fileName;
+    private int codef;;
     @JsonBackReference(value = "category")
     @ManyToOne
     private Category category;
+    @JsonBackReference(value = "Fournisseur")
+    @ManyToOne
+    private Fournisseur four;
 }
